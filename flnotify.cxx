@@ -26,7 +26,7 @@ static void goOnTop(Fl_Window *prex){
 	XChangeWindowAttributes(fl_display, win, CWOverrideRedirect | CWBackPixmap  , &attr);
 }
 
-static void timeout(void *v){
+static void timeout(void *){
   exit(0);
 }
 
@@ -35,14 +35,14 @@ int Fl_Box::handle(int event) {
   return 0;
 }
 
-static int parser(int argc, char **argv, int &z){
+static int parser(int, char **, int &){
   return 0; // gets rid of FLTK help text.
 }
 
 int main(int argc, char **argv) {
 
   float time=5;
-  int i=0,t=0,b=0,hpos=0,wpos=0;
+  int i=0, t=0, b=0, hpos=0, wpos=0;
   FILE *pipe;
   Fl::args(argc,argv,i,&parser);
 
