@@ -1,6 +1,5 @@
 /*
 	FLTK notify applet
-	v0.8.1
 
 	(C) Curaga
 */
@@ -16,6 +15,7 @@
 #define W 280
 #define H 120
 #define COMMAND "ps -e | grep -v grep | grep -c flnotify"
+#define VER "0.9"
 
 static void goOnTop(Fl_Window *prex){
 	Window win=fl_xid(prex);
@@ -46,14 +46,24 @@ int main(int argc, char **argv) {
   FILE *pipe;
   Fl::args(argc,argv,i,&parser);
 
-  if( argc==1 ) {
-	printf("%s [opts] \"say hi\"\n\n"
-	     "-t [time to show] default 5.0\n\nPosition:\n"
-	     "-r right\n"
-	     "-b bottom (left by default, right with -r)\n"
-	     "-c center\n\n"
-	     "For anywhere else, use the standard -g option.\n",argv[0]);
-	exit(0);
+  if (argc == 1) {
+	printf("\nflnotify v%s\n\n"
+	     "Usage: %s [opts] \"say hi\"\n\n"
+
+	     "Options:\n\n"
+	     "\t-t [time to show] default 5.0\n\n"
+	     "Colors:\n"
+	     "\t-bg <color> background color\n"
+	     "\t-fg <color> text color\n\n"
+	     "The color can be either named (green) or rgb ('#00ff00').\n\n"
+	     "Position:\n"
+	     "\t-r right\n"
+	     "\t-b bottom (left by default, right with -r)\n"
+	     "\t-c center\n\n"
+	     "For anywhere else, use the standard -g option.\n"
+	     "The size can also be changed with -g.\n", VER, argv[0]);
+
+	return 0;
   }
 
 // First check if something is already being notified. If so, position somewhere else.
