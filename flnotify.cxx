@@ -15,7 +15,7 @@
 #define W 280
 #define H 120
 #define COMMAND "ps -e | grep -v grep | grep -c flnotify"
-#define VER "0.9"
+#define VER "0.9.1"
 
 static void goOnTop(Fl_Window *prex){
 	Window win=fl_xid(prex);
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
   FILE *pipe;
   Fl::args(argc,argv,i,&parser);
 
-  if (argc == 1) {
+  if (argc == 1 || strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0) {
 	printf("\nflnotify v%s\n\n"
 	     "Usage: %s [opts] \"say hi\"\n\n"
 
