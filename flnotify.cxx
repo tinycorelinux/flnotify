@@ -55,11 +55,13 @@ int main(int argc, char **argv) {
 	     "Colors:\n"
 	     "\t-bg <color> background color\n"
 	     "\t-fg <color> text color\n\n"
+
 	     "The color can be either named (green) or rgb ('#00ff00').\n\n"
 	     "Position:\n"
 	     "\t-r right\n"
 	     "\t-b bottom (left by default, right with -r)\n"
 	     "\t-c center\n\n"
+
 	     "For anywhere else, use the standard -g option.\n"
 	     "The size can also be changed with -g.\n", VER, argv[0]);
 
