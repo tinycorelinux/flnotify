@@ -17,17 +17,6 @@
 #define COMMAND "ps -e | grep -v grep | grep -c flnotify"
 #define VER "0.9.1"
 
-static void goOnTop(Fl_Window * prex) {
-
-	Window win = fl_xid(prex);
-
-	XSetWindowAttributes attr;
-	attr.override_redirect = True;
-	attr.background_pixmap = None;
-	XChangeWindowAttributes(fl_display, win,
-				CWOverrideRedirect | CWBackPixmap, &attr);
-}
-
 static void timeout(void *) {
 	exit(0);
 }
@@ -110,13 +99,13 @@ int main(int argc, char **argv) {
 
 	Fl_Box *box = new Fl_Box(2, 2, W - 4, H - 4, argv[argc - 1]);
 	box->box(FL_UP_BOX);
-/*  box->color(FL_BLACK);
-  box->labelcolor(FL_WHITE);*/
 	box->align(FL_ALIGN_WRAP);
 
 	window->end();
+	window->set_override();
+
 	window->show(argc, argv);
-	goOnTop(window);
+
 	Fl::add_timeout(time, timeout, NULL);
 	return Fl::run();
 }
