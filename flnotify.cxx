@@ -21,13 +21,17 @@ static void timeout(void *) {
 	exit(0);
 }
 
-int Fl_Box::handle(int event) {
+class mybox: public Fl_Box {
+public:
+	mybox(int x, int y, int w, int h, const char *lbl): Fl_Box(x, y, w, h, lbl) {}
 
-	if (event == FL_PUSH)
-		timeout(NULL);
+	int handle(int event) {
+		if (event == FL_PUSH)
+			timeout(NULL);
 
-	return 0;
-}
+		return 0;
+	}
+};
 
 static int parser(int, char **, int &) {
 
@@ -97,7 +101,7 @@ int main(int argc, char **argv) {
 	window->border(0);
 	window->box(FL_NO_BOX);
 
-	Fl_Box *box = new Fl_Box(2, 2, W - 4, H - 4, argv[argc - 1]);
+	mybox *box = new mybox(2, 2, W - 4, H - 4, argv[argc - 1]);
 	box->box(FL_UP_BOX);
 	box->align(FL_ALIGN_WRAP);
 
