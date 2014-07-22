@@ -15,7 +15,7 @@
 #define W 280
 #define H 120
 #define COMMAND "ps -e | grep -v grep | grep -c flnotify"
-#define VER "0.9.1"
+#define VER "0.9.2"
 
 static void timeout(void *) {
 	exit(0);
