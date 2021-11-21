@@ -7,7 +7,7 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Box.H>
-#include <FL/x.h>
+#include <FL/x.H>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
